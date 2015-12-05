@@ -6,7 +6,9 @@ Misc systemd user units from my workstation
 
 ## Checkmail@.service
 
-Runs an [mbsync][mbsync_home] process for the given mbsync configuration stanza
+Runs an [mbsync][mbsync_home] process for the given mbsync configuration
+stanza. The systemd instance name must match the name of an mbsync
+configuration.
 
 [mbsync_home]: http://isync.sourceforge.net/
 
@@ -22,3 +24,17 @@ Enable the timer unit for a given instance(s):
 
     systemctl enable --user checkmail@username_at_domain.timer
     systemctl enable --user checkmail@username_at_other_domain.timer
+
+## gpg-agent.service
+
+Runs a gpg-agent instance with ssh support. Needs corresponding configuration
+in `~/.gnupg/gpg-agent.conf`
+
+A vanilla setup might look something like:
+
+    no-grab
+    pinentry-program /usr/bin/pinentry-curses
+    default-cache-ttl 1200
+    default-cache-ttl-ssh 14400
+    enable-ssh-support
+
