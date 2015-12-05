@@ -1,0 +1,9 @@
+[Unit]
+Description=Sync %i mail using mbsync
+RefuseManualStart=no
+RefuseManualStop=no
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/mbsync -q %i
