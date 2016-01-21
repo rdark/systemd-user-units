@@ -3,8 +3,8 @@ Description=Sync %i mail using mbsync
 RefuseManualStart=no
 RefuseManualStop=no
 After=network-online.target
-TimeoutStartSec=15min
 
 [Service]
 Type=oneshot
+TimeoutStartSec=15min
 ExecStart=/usr/bin/mbsync -q %i
